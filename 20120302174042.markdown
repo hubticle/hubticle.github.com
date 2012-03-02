@@ -1,3 +1,2 @@
 # example3
-hello,  
-world!  
+hello, world!

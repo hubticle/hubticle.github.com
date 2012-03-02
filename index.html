@@ -74,7 +74,7 @@ p {
 var markdown = new Showdown.converter();
 
 hubticle.postView = function(path, content) {
-  var view = '<div class="post"><div class="path"><a href="/#/posts/#{path}">#{path}</a></div><div class="content">#{content}</div></div>';
+  var view = '<div class="post"><div class="content">#{content}</div><div class="path"><a href="/#/posts/#{path}">#{path}</a></div></div>';
   view = view.replace('#{path}', path);
   view = view.replace('#{path}', path);
   view = view.replace('#{content}', markdown.makeHtml(content));
