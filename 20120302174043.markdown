@@ -5,7 +5,7 @@
 2. Repository Name change  
     "hubticle.github.com"  
     to  
-    "username.github.com" 
+    "username.github.com"  
 3*. Open  
     http://username.github.com/  
 
@@ -14,7 +14,7 @@
 $ git clone git@github.com:username/username.github.com.git
 $ cd username.github.com
 
-$ touch `date +%Y%m%d%H%M%S`.markdown
+$ touch \`date +%Y%m%d%H%M%S\`.markdown
 </code>
   
 write  
