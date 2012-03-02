@@ -1,7 +1,7 @@
 # Hubticle README
 
 ## How to install
-1. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/fork_select">Hubticle</a>  
+1. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/">Hubticle</a>  
 2. Repository Name change  
     "hubticle.github.com"  
     to  
