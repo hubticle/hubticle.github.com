@@ -10,15 +10,22 @@
     http://username.github.com/  
 
 ## How to write article
+clone
     $ git clone git@github.com:username/username.github.com.git
     $ cd username.github.com
 
+write setting
+    $ hubticle.settings.user rewrite username            in index.html
+    $ hubticle.settings.repo rewrite username.github.com in index.html
+
+write article
     $ touch \`date +%Y%m%d%H%M%S\`.markdown
     or
     $ emacs \`date +%Y%m%d%H%M%S\`.markdown
     (file type *.markdown only)
     write
 
+push
     $ git add .
     $ git commit -m "push"
     $ git pull origin master
