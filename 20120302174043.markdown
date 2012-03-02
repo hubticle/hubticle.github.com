@@ -31,6 +31,6 @@ write article
 push  
   
     $ git add .
-    $ git commit -m "push"
+    $ git commi -a
     $ git pull origin master
     $ git push origin master
