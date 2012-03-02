@@ -1,12 +1,12 @@
 # Hubticle README
 
 ## How to install
-1. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/fork_select">Hubticle</a>.  
+1. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/fork_select">Hubticle</a>  
 2. Repository Name change  
     "hubticle.github.com"  
     to  
     "username.github.com"  
-3. Open  
+3. Open (It may take up to 10 minutes to activate GitHub Pages for your account)  
     http://username.github.com/  
 
 ## How to write article
