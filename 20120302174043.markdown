@@ -1,8 +1,10 @@
 # Blog builds by pushing to GitHub.
 
 ## How to install
-*step 1*. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/fork_select">Hubticle</a>.
-*step 2*. Repository Name change
+*step 1*. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/fork_select">Hubticle</a>.  
+  
+  
+*step 2*. Repository Name change  
   
 "hubticle.github.com"  
 to 
@@ -10,7 +12,8 @@ to
   
 username is GitHub username.  
   
-*step 3*. Open
+  
+*step 3*. Open  
   
 http://username.github.com/  
   
