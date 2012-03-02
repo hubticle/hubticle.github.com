@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Hubticle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="./app/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="./app/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="./app/async.js"></script>
+<script type="text/javascript" src="./app/json2.js"></script>
+<script type="text/javascript" src="./app/underscore-min.js"></script>
+<script type="text/javascript" src="./app/backbone-min.js"></script>
+<script type="text/javascript" src="./app/base64.js"></script>
+<script type="text/javascript" src="./app/showdown.js"></script>
+
+<script type="text/javascript">
+var hubticle = {}
+hubticle.settings = {};
+hubticle.settings.apiUrl = 'https://api.github.com';
+hubticle.settings.pageCapacity = 5;
+
+hubticle.settings.user = 'hubticle';            // setting user name
+hubticle.settings.repo = 'hubticle.github.com'; // setting repo name
+</script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="header">
+      <h1>Hubticle</h1>
+      <p class="lead">Blog builds by pushing to GitHub.</p>
+    </div>
+    <div id="posts"></div>
+    <div id="steps">
+      <div id="steps_prev"></div>
+      <div id="steps_next"></div>
+    </div>
+    <div id="footer">
+  </div>
+</div>
+
+<style>
+.container {
+  margin: 0 auto;
+  width: 500px;
+  font-family: monospace;
+}
+#header > h1 {
+  margin: 10px 0px 20px 0px;
+
+  font-size: 54px;
+}
+.post {
+  margin: 10px 0px 20px 0px;
+
+  border-bottom: 1px solid #EEEEEE;
+}
+.post > .content > h1 {
+  margin: 10px 0px 10px 0px;
+}
+#steps_next{
+  font-family: monospace;
+}
+#steps_prev{
+  font-family: monospace;
+}
+</style>
+
+<script type="text/javascript">
+var markdown = new Showdown.converter();
+
+hubticle.postView = function(path, content) {
+  var view = '<div class="post"><div class="path"><a href="/#/posts/#{path}">#{path}</a></div><div class="content">#{content}</div></div>';
+  view = view.replace('#{path}', path);
+  view = view.replace('#{path}', path);
+  view = view.replace('#{content}', markdown.makeHtml(content));
+  return view;
+}
+
+hubticle.setItem = function(path, url, callback) {
+  var apiCall = {
+    url: hubticle.settings.apiUrl, dataType: 'jsonp', data: null, success: null, error: function() {alert('error');}
+  }
+
+  apiCall.url = url;
+  apiCall.success = function(data) {
+    var content = data.data.content;
+    content = data.data.content.replace(/\r\n/g, '').replace(/\n/g, '');
+    $('#posts').append(hubticle.postView(path, Base64.decode(content)));
+    callback();
+  };
+  $.ajax(apiCall);
+}
+
+hubticle.setList = function(articleId, pageNum) {
+  $('#posts').empty();
+
+  var apiCall = {
+    url: hubticle.settings.apiUrl, dataType: 'jsonp', data: null, success: null, error: function() {alert('error');}
+  }
+
+  apiCall.url = apiCall.url + '/repos/' + hubticle.settings.user + '/' + hubticle.settings.repo + '/git/trees/master';
+  apiCall.success = function(data) {
+    var fileList = [];
+
+    for (var i = 0; i < data.data.tree.length; i++) {
+      if (data.data.tree[i]['path'].match(/^.*\.markdown$/)) {
+        fileList.push(data.data.tree[i]);
+      }
+    }
+
+    fileList = fileList.sort(function(a, b) {return a['path'] < b['path'] ? 1 : -1;});
+
+    var q = async.queue(
+      function(task, callback) {
+        hubticle.setItem(task.path, task.url, callback);
+      },
+      1
+    );
+
+    var sIndex = 0;
+    if (pageNum != null) {
+      sIndex = pageNum * hubticle.settings.pageCapacity;
+    }
+
+    var eIndex = fileList.length;
+    if (pageNum != null) {
+      eIndex = pageNum * hubticle.settings.pageCapacity + hubticle.settings.pageCapacity;
+    }
+
+    for (var i = sIndex; i < fileList.length && i < eIndex; i++) {
+      if ((articleId != null && articleId == fileList[i]['path']) || (articleId == null)) {
+        q.push(fileList[i]);
+      }
+    }
+
+    if (pageNum != null) {
+      if (sIndex != 0) {
+        $('#steps_prev').empty();
+        $('#steps_prev').append('<a href="#/page/' + (parseInt(pageNum) - 1) + '">prev</a>');
+      }
+      else {
+        $('#steps_prev').empty();
+        $('#steps_prev').append('<span>prev</span>');
+      }
+    }
+
+    if (pageNum != null) {
+      if (eIndex < fileList.length) {
+        $('#steps_next').empty();
+        $('#steps_next').append('<a href="#/page/' + (parseInt(pageNum) + 1) + '">next</a>');
+      }
+      else {
+        $('#steps_next').empty();
+        $('#steps_next').append('<span>next</span>');
+      }
+    }
+  };
+  $.ajax(apiCall);
+}
+
+hubticle.AppRouter = Backbone.Router.extend({
+  routes: {
+    '': 'index',
+    '/posts/:id': 'archivesByItem',
+    '/page/:pageNum': 'archivesByPage'
+  },
+
+  index: function() {
+    var id = null;
+    var pageNum = 0;
+    hubticle.setList(id, pageNum);
+  },
+
+  archivesByItem: function(id) {
+    var id = id;
+    var pageNum = null;
+    hubticle.setList(id, pageNum);
+  },
+
+  archivesByPage: function(pageNum) {
+    var id = null;
+    var pageNum = pageNum;
+    hubticle.setList(id, pageNum);
+  }
+});
+
+$(function() {
+  new hubticle.AppRouter();
+  Backbone.history.start();
+});
+</script>
+</body>
+</html>

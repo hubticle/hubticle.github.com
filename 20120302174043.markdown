@@ -1,0 +1,31 @@
+# Blog builds by pushing to GitHub.
+
+## How to install
+*step 1*. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/fork_select">Hubticle</a>.
+*step 2*. Repository Name change
+  
+"hubticle.github.com"  
+to 
+"username.github.com" 
+  
+username is GitHub username.  
+  
+*step 3*. Open
+  
+http://username.github.com/  
+  
+username is GitHub username.  
+  
+## How to write article
+  
+$ git clone git@github.com:username/username.github.com.git  
+$ cd username.github.com  
+  
+$ touch `date +%Y%m%d%H%M%S`.markdown  
+  
+write  
+(file type *.markdown only)  
+  
+$ git add .  
+$ git commit -m "push"  
+$ git push origin master  
