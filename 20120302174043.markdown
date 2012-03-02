@@ -1,6 +1,8 @@
 # Hubticle README
 
 ## How to install
+*replace username by GitHub account name*  
+  
 1. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/">Hubticle</a>  
 2. Repository Name change  
     "hubticle.github.com"  
@@ -10,6 +12,8 @@
     http://username.github.com/  
 
 ## How to write article
+*replace username by GitHub account name*  
+  
 clone  
   
     $ git clone git@github.com:username/username.github.com.git
