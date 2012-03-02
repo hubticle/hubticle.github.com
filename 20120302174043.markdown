@@ -17,8 +17,8 @@ clone
 
 write setting  
   
-    $ hubticle.settings.user rewrite username            in index.html
-    $ hubticle.settings.repo rewrite username.github.com in index.html
+    hubticle.settings.user rewrite username            in index.html
+    hubticle.settings.repo rewrite username.github.com in index.html
 
 write article  
   
