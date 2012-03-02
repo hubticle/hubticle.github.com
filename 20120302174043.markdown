@@ -22,15 +22,15 @@ write setting
 
 write article  
   
-    $ touch \`date +%Y%m%d%H%M%S\`.markdown
+    $ touch `date +%Y%m%d%H%M%S`.markdown
     or
-    $ emacs \`date +%Y%m%d%H%M%S\`.markdown
+    $ emacs `date +%Y%m%d%H%M%S`.markdown
     (file type *.markdown only)
     write
 
 push  
   
     $ git add .
-    $ git commi -a
+    $ git commit -a
     $ git pull origin master
     $ git push origin master
