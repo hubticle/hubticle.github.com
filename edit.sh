@@ -17,9 +17,7 @@ sed_arg="${choice}p"
 
 post=`cat posts | sed -n $sed_arg | cut -d ":" -f1`
 
-post="${post}.markdown"
-
-open -W $post
+open -W $post.markdown
 
 git add .
 git commit -m "edited post $post"

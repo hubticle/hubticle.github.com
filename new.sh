@@ -6,10 +6,10 @@ touch $newpost.markdown
 
 open -W $newpost.markdown
 
-#git add .
-#git commit -a
-#git pull origin master
-#git push origin master
+git add .
+git commit -m "New post"
+git pull origin master
+git push origin master
 
 if ! [ -f posts ]
 then
