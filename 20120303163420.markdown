@@ -1,0 +1,12 @@
+#nischal.sh
+
+So , i'm too tired to do the whole git thingie so i'm going to write a script for it . And it is going to be named after a real BADA AADMI that i know , called Nischal .. So just putting up the shell script here in case i lose the copy sometime later
+
+	#!/bin/bash
+
+	git add .
+	git commit -a
+	git pull origin master
+	git push origin master
+
+This is *probably* the first ever working shell script that i have written (ofc , it assumes that it works)
