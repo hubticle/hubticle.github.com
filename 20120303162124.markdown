@@ -1,0 +1,11 @@
+#dot files
+
+So , i'm trying to get my head around these "dot files" that are created as GH repo's by people. 
+
+AFAIK , the dotfiles are stored in the ~ directory which are read by all the softwares like VIM, EMACS, RUBY and the like .. 
+
+But then how are all of these things consolidated into one GH repo ? Is there someway by which you can take these dotfiles and put them into a folder ? Or is the .gitignore file specifically written to ignore everything else except the dotfiles ? 
+
+**CONFUSION** , you could say ! 
+
+*Help!*
