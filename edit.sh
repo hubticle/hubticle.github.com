@@ -21,7 +21,7 @@ post="${post}.markdown"
 
 open -W $post
 
-#git add .
-#git commit -a
+git add .
+git commit -m "edited post $post"
 #git pull origin master
 #git push origin master
