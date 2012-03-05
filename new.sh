@@ -6,10 +6,13 @@ touch $newpost.markdown
 
 open -W $newpost.markdown
 
-git add .
-git commit -m "New post"
-git pull origin master
-git push origin master
+if ! [ "$#" = "1" -a "$1" = "-g" ]
+then
+	git add .
+	git commit -m "New post"
+	git pull origin master
+	git push origin master
+fi
 
 if ! [ -f posts ]
 then

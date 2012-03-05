@@ -1,6 +1,10 @@
 #!/bin/bash
 
-rm posts
+if [ -f posts ]
+then
+	rm posts
+fi
+
 touch posts
 
 ls -l *.markdown | awk '{print $9}' | cut -d "." -f1 | while read LINE
