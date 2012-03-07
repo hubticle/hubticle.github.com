@@ -55,17 +55,16 @@ this would bring up a list of posts in your directory and allow you to select on
 
 the *push it online* part can once again be bypassed using the `-g` switch
 
-```
-./edit.sh
 
-POSTS
-1) 20120302174040: example1
-2) 20120302174041: example2
-3) 20120302174042: example3
-4) 20120302174043: Hubticle README
+	./edit.sh
 
-Edit what? :
-```
+	POSTS
+	1) 20120302174040: example1
+	2) 20120302174041: example2
+	3) 20120302174042: example3
+	4) 20120302174043: Hubticle README
+
+	Edit what? :
 
 ####initp
 
