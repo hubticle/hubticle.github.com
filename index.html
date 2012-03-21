@@ -7,8 +7,6 @@
 
 <link href="./app/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<script type="text/javascript" src="http://scripts.embed.ly/embedly.js"></script>
-
 <script type="text/javascript" src="./app/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="./app/async.js"></script>
 <script type="text/javascript" src="./app/json2.js"></script>
@@ -16,6 +14,8 @@
 <script type="text/javascript" src="./app/backbone-min.js"></script>
 <script type="text/javascript" src="./app/base64.js"></script>
 <script type="text/javascript" src="./app/showdown.js"></script>
+
+<script src="http://scripts.embed.ly/jquery.embedly.min.js"></script>
 
 <script type="text/javascript">
 var hubticle = {}
@@ -25,6 +25,8 @@ hubticle.settings.pageCapacity = 5;
 
 hubticle.settings.user = 'hubticle';            // setting user name
 hubticle.settings.repo = 'hubticle.github.com'; // setting repo name
+
+hubticle.settings.embedlyApiKey = '1a76167c734511e193c14040d3dc5c07';
 </script>
 </head>
 
@@ -205,6 +207,10 @@ hubticle.AppRouter = Backbone.Router.extend({
 $(function() {
   new hubticle.AppRouter();
   Backbone.history.start();
+
+  $("a").embedly({
+    key: hubticle.settings.embedlyApiKey
+  });
 });
 </script>
 </body>
