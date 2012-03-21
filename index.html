@@ -149,6 +149,10 @@ hubticle.setList = function(articleId, pageNum) {
       }
     }
 
+    q.drain = function() {
+      $('a').embedly({key: hubticle.settings.embedlyApiKey});
+    }
+
     if (pageNum != null) {
       if (sIndex != 0) {
         $('#steps_prev').empty();
@@ -207,10 +211,6 @@ hubticle.AppRouter = Backbone.Router.extend({
 $(function() {
   new hubticle.AppRouter();
   Backbone.history.start();
-
-  $("a").embedly({
-    key: hubticle.settings.embedlyApiKey
-  });
 });
 </script>
 </body>
