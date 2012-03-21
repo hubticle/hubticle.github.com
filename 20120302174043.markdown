@@ -1,30 +1,27 @@
 # Hubticle README
 
 ## How to install
-*replace username by GitHub account name*  
+*replace **username** by GitHub account name*  
   
-1. Fork me on GitHub <a href="https://github.com/hubticle/hubticle.github.com/">Hubticle</a>  
-2. Repository Name change  
-    "hubticle.github.com"  
-    to  
-    "username.github.com"  
+1. Fork me on GitHub: [Hubticle](https://github.com/hubticle/hubticle.github.com/) 
+2. Change the name of the forked repo from "**hubticle**.github.com" to "**username**.github.com"  
 3. Open (It may take up to 10 minutes to activate GitHub Pages for your account)  
     http://username.github.com/  
 
-## How to write article
+## How to write an article
 *replace username by GitHub account name*  
   
-clone  
+####clone  
   
     $ git clone git@github.com:username/username.github.com.git
     $ cd username.github.com
 
-write setting  
+####write setting  
   
     hubticle.settings.user rewrite username            in index.html
     hubticle.settings.repo rewrite username.github.com in index.html
 
-write article  
+####write article  
   
     $ touch `date +%Y%m%d%H%M%S`.markdown
     or
@@ -32,9 +29,45 @@ write article
     (file type *.markdown only)
     write
 
-push  
+####push  
   
     $ git add .
     $ git commit -a
     $ git pull origin master
     $ git push origin master
+
+
+##Scripts
+*now you can use small shell scripts to create / edit your posts*
+
+####add
+
+this would create a new post , open it up with an assigned markdown editor and on close , would commit to the git repo and push it online
+
+the *push it online* part can be bypassed by using the `-g` switch
+
+	./new.sh
+	
+
+####edit
+
+this would bring up a list of posts in your directory and allow you to select one particular post to open up with an assigned markdown editor and on close, would commit to the git repo and push it online
+
+the *push it online* part can once again be bypassed using the `-g` switch
+
+
+	./edit.sh
+
+	POSTS
+	1) 20120302174040: example1
+	2) 20120302174041: example2
+	3) 20120302174042: example3
+	4) 20120302174043: Hubticle README
+
+	Edit what? :
+
+####initp
+
+this is useful to make the index of the current `.markdown` files in the directory. So when you want to start using the scripts , it is recommended to use the `initp.sh` command first so that the index is created.
+
+	./initp.sh
