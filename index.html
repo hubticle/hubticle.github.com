@@ -153,6 +153,8 @@ hubticle.setList = function(articleId, pageNum) {
         $('#steps_prev').empty();
         $('#steps_prev').append('<span>prev</span>');
       }
+    } else {
+      $('#steps_prev').empty();
     }
 
     if (pageNum != null) {
@@ -164,6 +166,8 @@ hubticle.setList = function(articleId, pageNum) {
         $('#steps_next').empty();
         $('#steps_next').append('<span>next</span>');
       }
+    } else {
+      $('#steps_next').empty();
     }
   };
   $.ajax(apiCall);
