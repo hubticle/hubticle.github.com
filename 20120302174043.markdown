@@ -66,8 +66,8 @@ the *push it online* part can once again be bypassed using the `-g` switch
 
 	Edit what? :
 
-####initp
+####init
 
-this is useful to make the index of the current `.markdown` files in the directory. So when you want to start using the scripts , it is recommended to use the `initp.sh` command first so that the index is created.
+this is useful to make the index of the current `.markdown` files in the directory. So when you want to start using the scripts , it is recommended to use the `init.sh` command first so that the index is created.
 
 	./init.sh
